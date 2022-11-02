@@ -1,3 +1,9 @@
+/* @import './components/container.css'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navigation__link:hover .navigation__submenu  {
+    @apply block;
+}
