@@ -2,7 +2,7 @@
 
 <div class="grid grid-cols-4 gap-4 p-6 h-full">
     <div>
-        <h5 class="text-green-900 font-bold text-lg mb-4">Subcategorías</h5>
+        <h5 class="text-emerald-900 font-bold text-lg mb-4">Subcategorías</h5>
         <ul>
             @foreach ($category->subcategories as $subcategory)
                 <li>

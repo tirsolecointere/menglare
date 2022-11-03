@@ -1,7 +1,7 @@
-<header class="bg-lime-100 text-green-800 sticky top-0 z-40" x-data="navMenu()">
+<header class="bg-lime-100 text-emerald-800 shadow-sm shadow-emerald-900/10 sticky top-0 z-40" x-data="navMenu()">
     <div class="container flex items-center h-16 gap-6">
         {{-- Categories trigger --}}
-        <button type="button" class="bg-lime-200 hover:bg-white flex flex-col items-center justify-center h-full px-4 leading-none"
+        <button type="button" class="bg-lime-200 hover:bg-lime-300 flex flex-col items-center justify-center h-full px-4 leading-none"
             @click="show()"
             :class="{
                 'bg-white' : open,
@@ -85,7 +85,7 @@
                 @click.away="close()">
                 <ul class="bg-white pt-4">
                     @foreach ($categories as $category)
-                        <li class="navigation__link text-green-800 hover:bg-lime-300">
+                        <li class="navigation__link text-emerald-800 hover:bg-lime-300">
                             <a href="" class=" | flex items-center font-semibold py-2 px-4">
                                 <span class="block text-center w-9">{!! $category->icon !!}</span>
                                 {{ $category->name }}
