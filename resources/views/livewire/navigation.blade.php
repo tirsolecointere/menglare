@@ -74,15 +74,26 @@
         </div>
     </div>
 
-    <nav class="fixed top-16 left-0 right-0 bottom-0 bg-black bg-opacity-25 z-30 pb-16 hidden"
+    <nav class="fixed top-16 left-0 right-0 bottom-0 z-30 pb-16 hidden"
         :class="{
             'block': open,
             'hidden': !open
         }"
         x-show="open">
+
+        <div class="absolute inset-0 bg-black bg-opacity-25"
+            x-transition:enter="transition ease-out duration-500"
+            x-transition:enter-start="transform opacity-0"
+            x-transition:enter-end="transform opacity-100"
+            x-show="open"></div>
+
         <div class="container h-full">
-            <div class="relative grid grid-cols-4 h-full bg-white"
-                @click.away="close()">
+            <div class="relative grid grid-cols-4 h-full bg-white shadow-2xl rounded-b-xl overflow-hidden"
+                @click.away="close()"
+                x-transition:enter="transition ease-out duration-200 origin-top"
+                x-transition:enter-start="transform opacity-0 translate-y-10 scale-y-90"
+                x-transition:enter-end="transform opacity-100 translate-y-0 scale-y-100"
+                x-show="open">
                 <ul class="bg-white pt-4">
                     @foreach ($categories as $category)
                         <li class="navigation__link text-emerald-800 hover:bg-lime-300">
