@@ -9,3 +9,8 @@
 .navigation__link:hover .navigation__submenu  {
     @apply block;
 }
+
+
+.swiper-slide-active {
+    @apply opacity-100;
+}
