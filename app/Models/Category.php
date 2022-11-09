@@ -11,6 +11,11 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'image', 'icon'];
 
+    // Friendly URL
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
     public function subcategories() {
         return $this->hasMany(Subcategory::class);
     }
@@ -22,4 +27,6 @@ class Category extends Model
     public function products() {
         return $this->hasManyThrough(Product::class, Subcategory::class);
     }
+
+
 }

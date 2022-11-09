@@ -1,7 +1,5 @@
 <x-app-layout>
-    <div class="container">
-        @foreach ($categories as $category)
-            @livewire('category-slider', ['category' => $category])
-        @endforeach
-    </div>
+    @foreach ($categories as $category)
+        @livewire('category-slider', ['category' => $category])
+    @endforeach
 </x-app-layout>

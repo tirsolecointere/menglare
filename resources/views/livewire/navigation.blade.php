@@ -4,7 +4,7 @@
         <button type="button" class="bg-lime-200 hover:bg-lime-300 flex flex-col items-center justify-center h-full px-4 leading-none"
             @click="show()"
             :class="{
-                'bg-white' : open,
+                'bg-white hover:bg-white' : open,
                 'bg-lime-200' : !open
             }">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
@@ -74,30 +74,31 @@
         </div>
     </div>
 
-    <nav class="fixed top-16 left-0 right-0 bottom-0 z-30 pb-16 hidden"
-        :class="{
-            'block': open,
-            'hidden': !open
-        }"
-        x-show="open">
+    <nav class="fixed top-16 left-0 right-0 bottom-0 z-30 pb-16" x-show="open">
 
         <div class="absolute inset-0 bg-black bg-opacity-25"
-            x-transition:enter="transition ease-out duration-500"
+            x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="transform opacity-0"
             x-transition:enter-end="transform opacity-100"
+            x-transition:leave="transition linear duration-100 origin-bottom"
+            x-transition:leave-start="transform opacity-100"
+            x-transition:leave-end="transform opacity-0"
             x-show="open"></div>
 
         <div class="container h-full">
             <div class="relative grid grid-cols-4 h-full bg-white shadow-2xl rounded-b-xl overflow-hidden"
                 @click.away="close()"
                 x-transition:enter="transition ease-out duration-200 origin-top"
-                x-transition:enter-start="transform opacity-0 translate-y-10 scale-y-90"
-                x-transition:enter-end="transform opacity-100 translate-y-0 scale-y-100"
+                x-transition:enter-start="transform opacity-0 scale-y-95"
+                x-transition:enter-end="transform opacity-100 scale-y-100"
+                x-transition:leave="transition linear duration-100 origin-top"
+                x-transition:leave-start="transform opacity-100 scale-y-100"
+                x-transition:leave-end="transform opacity-0 scale-y-95"
                 x-show="open">
                 <ul class="bg-white pt-4">
                     @foreach ($categories as $category)
                         <li class="navigation__link text-emerald-800 hover:bg-lime-300">
-                            <a href="" class=" | flex items-center font-semibold py-2 px-4">
+                            <a href="{{ route('categories.show', $category) }}" class=" | flex items-center font-semibold py-2 px-4">
                                 <span class="block text-center w-9">{!! $category->icon !!}</span>
                                 {{ $category->name }}
                             </a>
