@@ -14,6 +14,11 @@ class Product extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    // Friendly URL
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
     public function brand() {
         return $this->belongsTo(Brand::class);
     }

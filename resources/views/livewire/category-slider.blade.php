@@ -11,15 +11,7 @@
                     <div class="swiper-wrapper">
                         @foreach ($products as $product)
                         <div class="swiper-slide">
-                            <article class="bg-white rounded-lg">
-                                <div class="p-2">
-                                    <img class="w-full aspect-[4/3] object-cover object-center rounded" src="{{ Storage::url($product->images->first()->url) }}" alt="">
-                                </div>
-                                <div class="px-3 pb-3">
-                                    <h1 class="inline-bock font-semibold text-sm truncate">{{ $product->name }}</h1>
-                                    <div class="font-bold text-sm">${{ $product->price }}</div>
-                                </div>
-                            </article>
+                            <x-product :product="$product" type="grid"></x-product>
                         </div>
                         @endforeach
                     </div>
