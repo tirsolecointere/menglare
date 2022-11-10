@@ -6,8 +6,9 @@ use Livewire\Component;
 
 class AddCartItem extends Component
 {
-    public $product, $stock;
+    public $product;
     public $qty = 1;
+    public $stock = '';
 
     public function mount() {
         $this->stock = $this->product->quantity;

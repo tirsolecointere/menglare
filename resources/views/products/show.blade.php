@@ -32,7 +32,7 @@
                             <div class="flex-grow">
                                 <h1 class="text-3xl font-bold mb-1">{{ $product->name }}</h1>
                                 <div class="flex items-center divide-x text-sm text-stone-400 space-x-3 flex-shrink-0">
-                                    <div>Categoría: <a href="" class="hover:underline">{{ $product->subcategory->category->name }}</a></div>
+                                    <div>Categoría: <a href="{{ route('categories.show', $product->subcategory->category) }}" class="hover:underline">{{ $product->subcategory->category->name }}</a></div>
                                     <div class="pl-3">Marca: <a href="" class="hover:underline">{{ $product->brand->name }}</a></div>
                                 </div>
                             </div>

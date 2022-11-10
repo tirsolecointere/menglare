@@ -10,7 +10,7 @@ class AddCartItemColor extends Component
     public $color_id = '';
 
     public $qty = 1;
-    public $stock = 0;
+    public $stock = '';
 
     public function mount() {
         $this->colors = $this->product->colors;

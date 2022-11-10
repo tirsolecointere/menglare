@@ -15,7 +15,7 @@ class AddCartItemSize extends Component
     public $colors = [];
 
     public $qty = 1;
-    public $stock = 0;
+    public $stock = '';
 
     public function updatedSizeId($value) {
         if ($value) {
