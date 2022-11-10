@@ -8,7 +8,7 @@
                         <div class="swiper-wrapper">
                             @foreach ($product->images as $img)
                                 <div class="swiper-slide">
-                                    <img class="w-full" src="{{ Storage::url($img->url) }}" alt="">
+                                    <img class="w-full select-none" src="{{ Storage::url($img->url) }}" alt="">
                                 </div>
                             @endforeach
                         </div>
@@ -45,13 +45,25 @@
                         </div>
                         <div class="font-bold text-xl text-emerald-800">${{ $product->price }}</div>
 
-                        <div class="flex p-3 text-sm text-lime-700 bg-lime-50 border border-lime-300 rounded-lg my-4">
-                            <svg class="flex-shrink-0 inline w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /> </svg>
-                            <div>
-                                <div class="font-bold">Se hacen envíos a toda Venezuela!</div>
+                        <div class="my-3">
+                            <p class="leading-6">{{ $product->description }}</p>
+                        </div>
+
+                        <div class="flex p-3 text-sm bg-white shadow-md shadow-emerald-800/10 rounded-lg my-8">
+                            <svg class="text-emerald-600 flex-shrink-0 inline w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /> </svg>
+                            <div class="flex-grow">
+                                <div class="font-bold text-emerald-600">Se hacen envíos a toda Venezuela!</div>
                                 <div>Recíbelo el {{  Date::now()->addDays(5)->locale('es')->format('l j \de F') }}</div>
                             </div>
                         </div>
+
+                        @if ($product->subcategory->size)
+                            @livewire('add-cart-item-size', ['product' => $product])
+                        @elseif($product->subcategory->color)
+                            @livewire('add-cart-item-color', ['product' => $product])
+                        @else
+                            @livewire('add-cart-item', ['product' => $product])
+                        @endif
                     </div>
                 </div>
             </div>
