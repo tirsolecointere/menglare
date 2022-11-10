@@ -34,6 +34,12 @@
             </x-jet-secondary-button>
         </div>
 
-        <x-jet-button class="w-full justify-center py-3" x-bind:disabled="!$wire.stock">Agregar al carrito</x-jet-button>
+        <x-jet-button class="w-full justify-center py-3"
+            wire:click="addItem"
+            wire:loading.attr="disabled"
+            wire:target="addItem"
+            x-bind:disabled="!$wire.stock">
+            Agregar al carrito
+        </x-jet-button>
     </div>
 </div>
