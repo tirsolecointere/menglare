@@ -73,6 +73,10 @@ class AddCartItemSize extends Component
             'options' => $this->options,
         ]);
 
+        $this->stock = qty_available($this->product->id, $this->color_id, $this->size_id);
+
+        $this->reset('qty');
+
         $this->emitTo('dropdown-cart', 'render');
     }
 

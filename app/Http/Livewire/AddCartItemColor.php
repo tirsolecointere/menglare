@@ -14,7 +14,9 @@ class AddCartItemColor extends Component
     public $qty = 1;
     public $stock = '';
 
-    public $options = [];
+    public $options = [
+        'size_id' => null,
+    ];
 
     public function mount() {
         $this->colors = $this->product->colors;
@@ -52,6 +54,10 @@ class AddCartItemColor extends Component
             'weight' => 0,
             'options' => $this->options,
         ]);
+
+        $this->stock = qty_available($this->product->id, $this->color_id);
+
+        $this->reset('qty');
 
         $this->emitTo('dropdown-cart', 'render');
     }

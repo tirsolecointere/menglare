@@ -13,11 +13,22 @@ class AddCartItem extends Component
 
     public $qty = 1;
     public $stock = '';
-    public $options = [];
+    public $options = [
+        'color_id' => null,
+        'size_id' => null,
+    ];
 
     public function mount() {
-        $this->stock = $this->product->quantity;
+        $this->stock = qty_available($this->product->id);
         $this->options['image'] = Storage::url($this->product->images->first()->url);
+    }
+
+    public function updatedQty($value) {
+        if ($value > qty_available($this->product->id) ) {
+            $this->qty = $this->stock;
+        } elseif($value < 1) {
+            $this->qty = 1;
+        }
     }
 
     public function decrement() {
@@ -25,6 +36,14 @@ class AddCartItem extends Component
             $this->qty = $this->stock;
         } else {
             $this->qty = $this->qty - 1;
+        }
+    }
+
+    public function increment() {
+        if ($this->qty < 0) {
+            $this->qty = 1;
+        } else {
+            $this->qty = $this->qty + 1;
         }
     }
 
@@ -38,15 +57,11 @@ class AddCartItem extends Component
             'options' => $this->options,
         ]);
 
-        $this->emitTo('dropdown-cart', 'render');
-    }
+        $this->stock = qty_available($this->product->id);
 
-    public function increment() {
-        if ($this->qty < 0) {
-            $this->qty = 1;
-        } else {
-            $this->qty = $this->qty + 1;
-        }
+        $this->reset('qty');
+
+        $this->emitTo('dropdown-cart', 'render');
     }
 
     public function render()

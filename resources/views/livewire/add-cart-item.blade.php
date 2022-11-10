@@ -23,7 +23,7 @@
             <div>
                 <input wire:model="qty" x-bind:disabled="!$wire.stock" type="number"
                     class="bg-stone-50 w-14 text-center appearance-none border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-300 disabled:opacity-25 block transition-shadow px-2.5 py-2.5"
-                    min="1" max="{{ $stock }}" placeholder="1" required>
+                    min="1" max="{{ $stock }}" placeholder="1" readonly required>
             </div>
             <x-jet-secondary-button wire:click="increment" class="py-3"
                 wire:loading.attr="disabled"
