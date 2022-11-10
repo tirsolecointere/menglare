@@ -10,6 +10,7 @@ use Livewire\Component;
 class AddCartItem extends Component
 {
     public $product;
+
     public $qty = 1;
     public $stock = '';
     public $options = [];

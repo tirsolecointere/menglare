@@ -15,10 +15,22 @@
                         <div class="flex-shrik-0">
                             <img class="w-20 aspect-square object-cover object-center rounded-md" src="{{ $item->options->image }}" alt="">
                         </div>
-                        <div class="flex-grow flex flex-col">
-                            <h1 class="font-semibold"> {{ $item->name }} </h1>
-                            <div class="font-bold">${{ $item->price }}</div>
-                            <div class="text-sm text-stone-500 mt-auto">Cantidad : {{ $item->qty }}</div>
+                        <div class="flex-grow flex flex-col gap-2">
+                            <div>
+                                <h1 class="font-semibold">{{ $item->name }}</h1>
+                                <div class="font-bold">${{ $item->price }}</div>
+                            </div>
+                            <div class="flex items-end justify-between mt-auto">
+                                <ul class="text-sm text-stone-500 flex-grow-1">
+                                    @isset($item->options['color'])
+                                        <li>Color: {{ $item->options['color'] }}</li>
+                                    @endisset
+                                    @isset($item->options['size'])
+                                        <li>Tamaño: {{ $item->options['size'] }}</li>
+                                    @endisset
+                                </ul>
+                                <div class="text-sm text-stone-500 flex-shrink-0">Cantidad : {{ $item->qty }}</div>
+                            </div>
                         </div>
                     </li>
                 @empty
