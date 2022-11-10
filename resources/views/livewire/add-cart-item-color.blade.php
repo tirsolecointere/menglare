@@ -1,11 +1,13 @@
 <div x-data>
-    <x-jet-label for="select-color">Color</x-jet-label>
-    <select wire:model="color_id" id="select-color" class="block bg-white w-1/2 border border-gray-300 hover:border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-500 p-2.5 cursor-pointer transition">
-        <option value="" selected disabled>Seleccionar un color</option>
-        @foreach ($colors as $color)
-            <option value="{{ $color->id }}">{{ $color->name }}</option>
-        @endforeach
-    </select>
+    <div class="lg:w-9/12 xl:w-1/2 mb-4">
+        <x-jet-label for="select-color">Color</x-jet-label>
+        <select wire:model="color_id" id="select-color" class="block bg-white w-full border border-gray-300 hover:border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-500 p-2.5 cursor-pointer transition">
+            <option value="" selected disabled>Seleccionar un color</option>
+            @foreach ($colors as $color)
+                <option value="{{ $color->id }}">{{ $color->name }}</option>
+            @endforeach
+        </select>
+    </div>
 
     <div class="mt-8" x-show="$wire.stock">
         <div class="mb-3">Stock disponible: <b>{{ $stock }}</b></div>

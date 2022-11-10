@@ -45,10 +45,18 @@ class AddCartItemSize extends Component
     }
 
     public function decrement() {
-        $this->qty = $this->qty - 1;
+        if ($this->qty > $this->stock) {
+            $this->qty = $this->stock;
+        } else {
+            $this->qty = $this->qty - 1;
+        }
     }
 
     public function increment() {
-        $this->qty = $this->qty + 1;
+        if ($this->qty < 0) {
+            $this->qty = 1;
+        } else {
+            $this->qty = $this->qty + 1;
+        }
     }
 }

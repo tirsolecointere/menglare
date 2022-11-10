@@ -29,11 +29,14 @@
                 <div class="md:col-span-6 xl:col-span-7">
                     <div class="text-stone-800">
                         <div class="flex justify-between gap-3 mb-3">
-                            <h1 class="text-3xl font-bolb flex-grow">{{ $product->name }}</h1>
-                            <div class="flex items-center text-sm text-stone-400 gap-1 flex-shrink-0">
-                                <div>
-                                    Marca: <a href="" class="hover:underline">{{ $product->brand->name }}</a>
+                            <div class="flex-grow">
+                                <h1 class="text-3xl font-bold mb-1">{{ $product->name }}</h1>
+                                <div class="flex items-center divide-x text-sm text-stone-400 space-x-3 flex-shrink-0">
+                                    <div>Categoría: <a href="" class="hover:underline">{{ $product->subcategory->category->name }}</a></div>
+                                    <div class="pl-3">Marca: <a href="" class="hover:underline">{{ $product->brand->name }}</a></div>
                                 </div>
+                            </div>
+                            <div class="flex items-center text-sm text-stone-400 gap-1 flex-shrink-0">
                                 <a href="" class="inline-flex items-center gap-2 group hover:bg-yellow-50 rounded-full pl-2">
                                     <span class="group-hover:text-yellow-500">39 reseñas</span>
                                     <div class="inline-flex items-center justify-center text-xs bg-stone-50 group-hover:bg-yellow-200/50 rounded-full w-9 h-9">

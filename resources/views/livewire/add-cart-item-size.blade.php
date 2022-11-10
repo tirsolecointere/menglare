@@ -1,7 +1,7 @@
 <div x-data>
-    <div class="mb-4">
+    <div class="lg:w-9/12 xl:w-1/2 mb-4">
         <x-jet-label for="select-size">Talla</x-jet-label>
-        <select wire:model="size_id" id="select-size" class="block bg-white w-1/2 border border-gray-300 hover:border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-500 p-2.5 cursor-pointer transition">
+        <select wire:model="size_id" id="select-size" class="block bg-white w-full border border-gray-300 hover:border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-500 p-2.5 cursor-pointer transition">
             <option value="" selected disabled>Seleccionar una talla</option>
             @foreach ($sizes as $size)
                 <option value="{{ $size->id }}">{{ $size->name }}</option>
@@ -9,9 +9,9 @@
         </select>
     </div>
 
-    <div class="mb-4 {{ empty($colors) ? 'opacity-75 cursor-default' : '' }}">
+    <div class="lg:w-9/12 xl:w-1/2 mb-4 {{ empty($colors) ? 'opacity-75 cursor-default' : '' }}">
         <x-jet-label for="select-color">Color</x-jet-label>
-        <select wire:model="color_id" id="select-color" class="block bg-white w-1/2 border border-gray-300 hover:border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-500 p-2.5 transition {{ empty($colors) ? 'cursor-default' : 'cursor-pointer' }}"
+        <select wire:model="color_id" id="select-color" class="block bg-white w-full border border-gray-300 hover:border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-stone-200 focus:border-stone-500 p-2.5 transition {{ empty($colors) ? 'cursor-default' : 'cursor-pointer' }}"
             {{ empty($colors) ? 'disabled' : '' }}>
             <option value="" selected disabled>Seleccionar un color</option>
             @foreach ($colors as $color)
