@@ -21,7 +21,9 @@
     </div>
 
     <div class="mt-8">
-        @if ($stock > 0)
+        <div class="mb-3">Stock disponible: <b>@if($stock) {{ $stock }} @else {{ $product->stock == 0 ? '$product->stock' : $product->stock }} @endif</b></div>
+
+        {{-- @if ($stock > 0)
             <div class="mb-3">Stock disponible: <b>{{ $stock }}</b></div>
         @elseif(empty($stock))
             @if ($stock == 0)
@@ -32,7 +34,7 @@
             @else
                 <div class="mb-3"><em class="text-red-500">Seleccione las variantes</em></div>
             @endif
-        @endif
+        @endif --}}
         <div class="flex items-center gap-6">
             <div class="flex items-center space-x-2">
                 <x-jet-secondary-button wire:click="decrement" class="py-3" disabled
