@@ -47,7 +47,7 @@
                     <div class="flex items-center justify-between gap-2"><span>Subtotal:</span> <span>{{ Cart::subtotal() }}</span></div>
                     <div class="flex items-center justify-between gap-2"><span>Total:</span> <b>{{ Cart::total() }}</b></div>
                 </div>
-                <x-jet-button href="" type="link" class="justify-center w-full">Ver carrito</x-jet-button>
+                <x-jet-button href="{{ route('cart') }}" type="link" class="justify-center w-full">Ver carrito</x-jet-button>
                 <x-jet-secondary-button wire:click="clearCart" class="justify-center w-full">Limpiar carrito</x-jet-secondary-button>
             </div>
             @endif
