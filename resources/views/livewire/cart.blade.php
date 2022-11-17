@@ -80,7 +80,8 @@
 
         <div class="flex justify-end items-center gap-4">
             <div>Total:  <b>${{ Cart::subTotal() }}</b></div>
-            <x-jet-button>Ir a Checkout</x-jet-button>
+
+            <x-jet-button type="link" href="{{ route('orders.create') }}">Ir a Checkout</x-jet-button>
         </div>
 
     </div>
