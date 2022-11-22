@@ -33,12 +33,15 @@ return new class extends Migration
             $table->float('shipping_cost');
             $table->float('total');
             $table->json('content');
-            $table->string('address');
+            $table->string('contact');
+            $table->string('phone');
+            $table->string('address')->nullable();
+            $table->string('reference')->nullable();
 
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('department_id')->constrained();
-            $table->foreignId('city_id')->constrained();
-            $table->foreignId('district_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('department_id')->nullable()->constrained();
+            $table->foreignId('city_id')->nullable()->constrained();
+            $table->foreignId('district_id')->nullable()->constrained();
 
             $table->timestamps();
         });
