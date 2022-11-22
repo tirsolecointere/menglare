@@ -50,7 +50,7 @@
                                     {{-- Cities --}}
                                     <div>
                                         <x-jet-label value="Ciudad" />
-                                        <select wire:model="city_id" name="" id="" class="block w-full border-stone-200 focus:border-stone-300 focus:ring-2 focus:ring-stone-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                        <select wire:model="city_id" wire:loading.attr="disabled" wire:target="department_id" class="block w-full border-stone-200 focus:border-stone-300 focus:ring-2 focus:ring-stone-200 focus:ring-opacity-50 rounded-md shadow-sm">
                                             <option value="" disabled selected>Seleccione...</option>
                                             @foreach ($cities as $city)
                                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -62,7 +62,7 @@
                                     {{-- Districts --}}
                                     <div>
                                         <x-jet-label value="Distrito" />
-                                        <select wire:model="district_id" name="" id="" class="block w-full border-stone-200 focus:border-stone-300 focus:ring-2 focus:ring-stone-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                        <select wire:model="district_id" wire:loading.attr="disabled" wire:target="city_id" class="block w-full border-stone-200 focus:border-stone-300 focus:ring-2 focus:ring-stone-200 focus:ring-opacity-50 rounded-md shadow-sm">
                                             <option value="" disabled selected>Seleccione...</option>
                                             @foreach ($districts as $district)
                                                 <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -137,8 +137,8 @@
 
                 <div class="text-sm space-y-1 mb-2">
                     <div class="flex items-center justify-between gap-2"><span>Subtotal:</span> <span>$ {{ Cart::subtotal() }}</span></div>
-                    <div class="flex items-center justify-between gap-2"><span>Envío:</span> <span>Gratis</span></div>
-                    <div class="flex items-center justify-between gap-2"><span>Total:</span> <b>$ {{ Cart::subtotal() }}</b></div>
+                    <div class="flex items-center justify-between gap-2"><span>Envío:</span> <span>{{ $shipping_type == 1 || $shipping_cost == 0 ? 'Gratis' : '$ ' . $shipping_cost }}</span></div>
+                    <div class="flex items-center justify-between gap-2"><span>Total:</span> <b>$ {{ $shipping_type == 1 ? Cart::subtotal() : Cart::subtotal() + $shipping_cost }}</b></div>
                 </div>
             </div>
         </div>
