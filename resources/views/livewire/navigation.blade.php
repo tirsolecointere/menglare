@@ -1,4 +1,4 @@
-<header class="bg-lime-100 text-emerald-800 shadow-sm shadow-emerald-900/10 sticky top-0 z-40" x-data="navMenu()">
+<header class="bg-lime-100 text-emerald-800 shadow-sm shadow-emerald-900/10 sticky top-0 z-[1020]" x-data="navMenu()">
     <div class="container flex items-center h-16 gap-6">
         {{-- Categories trigger --}}
         <button type="button" class="bg-lime-200 hover:bg-lime-300 flex flex-col items-center justify-center h-full px-4 leading-none"
