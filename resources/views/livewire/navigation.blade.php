@@ -40,6 +40,7 @@
                                 <div class="block px-4 py-2 text-xs text-gray-400"> {{ Auth::user()->name }} </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}"> Perfil </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('orders.index') }}"> Historial </x-jet-dropdown-link>
 
                                 <div class="border-t border-gray-100"></div>
 

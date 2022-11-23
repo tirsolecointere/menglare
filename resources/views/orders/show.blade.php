@@ -3,7 +3,12 @@
     <div class="py-8">
         <div class="container max-w-5xl">
             <div class="space-y-6">
-                <h1 class="text-xl font-semibold uppercase">Número de orden: Orden-{{ $order->id }}</h1>
+                <div class="flex items-center justify-between">
+                    <h1 class="text-xl font-semibold uppercase">Número de orden: Orden-{{ $order->id }}</h1>
+                    @if ($order->status == 1)
+                        <x-jet-button href="{{ route('orders.payment', $order) }}" type="link">Pagar</x-jet-button>
+                    @endif
+                </div>
 
                 <div class="bg-white shadow p-4 lg:p-8 rounded-lg">
                     <ol class="flex items-center">
