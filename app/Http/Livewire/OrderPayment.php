@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Order;
 use Livewire\Component;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class OrderPayment extends Component
 {
+    use AuthorizesRequests;
+
     public $order;
 
     protected $listeners = ['payOrder'];
@@ -24,6 +27,9 @@ class OrderPayment extends Component
 
     public function render()
     {
+        $this->authorize('author', $this->order);
+        $this->authorize('payment', $this->order);
+
         $items = json_decode($this->order->content);
 
         return view('livewire.order-payment', compact('items'));

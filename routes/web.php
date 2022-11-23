@@ -30,6 +30,8 @@ Route::get('products/{product}', [ProductController::class, 'show'])->name('prod
 
 Route::get('cart', Cart::class)->name('cart');
 
-Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
-Route::get('orders/{order}/payment', OrderPayment::class)->middleware('auth')->name('orders.payment');
+Route::middleware(['auth'])->group(function () {
+    Route::get('orders/create', CreateOrder::class)->name('orders.create');
+    Route::get('orders/{order}/payment', OrderPayment::class)->name('orders.payment');
+    Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+});
