@@ -27,6 +27,7 @@ class AddCartItemColor extends Component
         $color = $this->product->colors->find($value);
         $this->stock = $color->pivot->quantity;
         $this->options['color'] = $color->name;
+        $this->options['color_id'] = $color->id;
     }
 
     public function decrement() {

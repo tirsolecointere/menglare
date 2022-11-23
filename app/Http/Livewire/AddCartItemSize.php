@@ -30,6 +30,7 @@ class AddCartItemSize extends Component
             $size = Size::find($value);
             $this->colors = $size->colors;
             $this->options['size'] = $size->name;
+            $this->options['size_id'] = $size->id;
         } else {
             $this->reset(['colors', 'stock']);
         }
@@ -42,6 +43,7 @@ class AddCartItemSize extends Component
 
             $this->stock = $color->pivot->quantity;
             $this->options['color'] = $color->name;
+            $this->options['color_id'] = $color->id;
         } else {
             $this->reset('stock');
         }
