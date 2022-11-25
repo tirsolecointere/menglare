@@ -8,6 +8,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Livewire\Cart;
 use App\Http\Livewire\CreateOrder;
 use App\Http\Livewire\OrderPayment;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*

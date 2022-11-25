@@ -11,6 +11,8 @@ class ColorSize extends Model
 
     protected $table = 'color_size';
 
+    protected $fillable = ['color_id', 'size_id', 'quantity'];
+
     public function color() {
         return $this->belongsTo(Color::class);
     }
